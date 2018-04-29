@@ -45,7 +45,36 @@ int main(int argc, char* argv[])
 String A("( ( a + ( b * c ) ) - d ) ;");
 String B;
          
-B = inToPrefix(A)
+B = inToPrefix(A);
+         
+assert(B == "- + a * b c d");
+////////////////////////////////////////////////
+         
+String C("( ( a + ( b / c ) ) - ( d * e ) ) ;");
+String D;
+
+D = inToPrefix(C);
+         
+assert(D == "- + a / b c * d e ");
+////////////////////////////////////////////////
+
+String E(" ( ( ( ( Ax * b ) + (cd / e ) ) - f ) + g ) ;");
+String F;
+         
+F = inToPrefix(E);
+
+assert(F == "+ - + * Ax b / cd e f g");
+//////////////////////////////////////////////////
+        
+String G(" ( ( ( ( ( ( c * b ) / ax ) + f ) - j ) + ( h * g ) ) - c ) ;");
+String H;
+         
+H = inToPrefix(G);
+         
+assert(H == "- + - + / * c b ax f j * h g c");
+ 
+std::cout << "Infix to Prefix Called!" << std::endl;
+ }
          
          
          
