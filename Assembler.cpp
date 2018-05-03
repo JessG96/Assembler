@@ -135,5 +135,57 @@ String evaluate(String left, String op, String right, std::ofstream& out)
   return "TMP" + String(n);                                          //return the string TMP + n
 }
 
+//MAIN 
+int main(int argc, char* argv[]
+{
+  if(argc <= 3 & argc !=)                                              //if there are less than or equal to three arguments but cant have just one
+  {
+    std::ifstream infix (argv[1]);                                     //creating an input stream called infix that takes the second argument
+    char buffer[200];                                                  //creating a buffer with size 200
+    
+    String postResult;                                                 //creating a string variable called postResult to store the result of inToPost
+    String preResult;                                                  //creating a string variable called preResult to store the result of inToPrefix
+    
+    std::ofstream out;                                                 //creating output stream called out
+    if(argc == 3)                                                      //if there are three arguments
+    {
+      out.open(argv[2]);                                               //open the file
+    }
+    while(infix.getline(buffer, 200)
+    {
+      postResult = inToPost(buffer);                                  //storing the result of inToPostfix(buffer) to postResult
+      preResult = inToPrefix(buffer);
+      
+      if(argc == 3)                                                   //if there are three arguments
+      {
+        out << "Infix Expression: " << buffer << std::endl;           //output the infix expression to a txt file
+        out << "Postfix Expression: " << postResult << std:: endl;    //output the postfix expression to a txt file
+        out << "Prefix Expression: " << preResult << std::endl;       //output the prefix expression to atxt file
+      }
+      else
+      {
+        std::cout << "Infix Expression: " << buffer << std::endl;     //otherwise output the infix expression to the console
+        std::cout << "Postfix Expression: " << postResult << std::endl;
+        std::cout << "Prefix Expression: " << preResult << std::endl; 
+      }
+      
+      n = '0';                                                        //set n to character 0 to use in posttoassembly
+    
+      std::cout << "Postfix to Assembly: " << std::endl;              //output the post to assembly expression to the console
+      out << "Postfix to Assembly: " << std::endll                    //output post to txt file
+      postToAssembly(buffer, out);                                    //calling postToAssembly to print out to the console/txt file
+      
+      n = '0';                                                        //reseting n variable back to 0
+      
+      std::cout << "Prefix to Assembly: " << std::endl;               //output to the console
+      out << "Prefix to Assembly: " << std::endl;                     //output to a txt
+      preToAssembly(buffer, out);                                     //calling preToAssembly to print out the console/txt file
+    } 
+    if(argc == 3)
+    {
+      out.close();
+    }
+  }
+}
 
 
